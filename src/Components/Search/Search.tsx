@@ -8,9 +8,21 @@ interface SearchProps {
   onSubmit: (text: string) => void;
 }
 
+type FormFiled = {
+  username: HTMLInputElement;
+};
+
 const Search: FC<SearchProps> = ({ hasError, onSubmit }) => {
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = (
+    event: React.FormEvent<HTMLFormElement & FormFiled>
+  ) => {
     event.preventDefault();
+    const text = event.currentTarget.username.value;
+
+    if (text) {
+      onSubmit(text);
+      event.currentTarget.username.value = '';
+    }
   };
 
   return (
@@ -24,7 +36,7 @@ const Search: FC<SearchProps> = ({ hasError, onSubmit }) => {
           className={styles.textField}
           id="search"
           name="username"
-          placeholder="Search Github username ..."
+          placeholder="Search user..."
         />
         {hasError && <div className={styles.error}>No result</div>}
         <Button>Search</Button>
