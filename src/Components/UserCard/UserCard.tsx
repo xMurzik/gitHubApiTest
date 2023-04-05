@@ -15,6 +15,9 @@ const UserCard = (props: UserCardProps) => {
         login={props.login}
         name={props.name}
       />
+      <p className={`${styles.bio}${props.bio ? '' : ` ${styles.empty}`}`}>
+        {props.bio || 'This profile has no bio'}
+      </p>
       <UserStat
         repos={props.repos}
         followers={props.followers}
