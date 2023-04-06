@@ -1,6 +1,6 @@
 import UserStat from 'Components/UserStat/UserStat';
 import UserTitle from 'Components/UserTitle/UserTitle';
-import React from 'react';
+import UserInfo from 'Components/UserInfo/UserInfo';
 import { ILocalUser } from 'types';
 import styles from './UserCard.module.scss';
 
@@ -22,6 +22,12 @@ const UserCard = (props: UserCardProps) => {
         repos={props.repos}
         followers={props.followers}
         following={props.following}
+      />
+      <UserInfo
+        blog={props.blog}
+        company={props.company}
+        location={props.location}
+        twitter={props.twitter}
       />
     </div>
   );
